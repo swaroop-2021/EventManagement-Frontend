@@ -68,7 +68,7 @@ function EventInfo(){
             else{
                 const currentUser=authService.getCurrentUser();
                 console.log(currentUser);
-                fetch(process.env.REACT_APP_API_URL+"registeredEvents",
+                fetch("http://"+process.env.REACT_APP_API_URL+"registeredEvents",
                 {
                     method:"POST",
                     body:JSON.stringify({email:currentUser.email}),
