@@ -198,7 +198,7 @@ function Signup () {
 
         if(!nameError && !emailError && !passwordError && !departmentError && !phonenumberError && !semesterError && !genderError && !userTypeError && !usnError){   
             console.log("hello"); 
-            fetch("http://localhost:8081/register",{
+            fetch("http://"+process.env.REACT_APP_API_URL + "register",{
                     method: 'POST',
                     body: JSON.stringify({values}),
                     headers: {

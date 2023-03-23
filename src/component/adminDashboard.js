@@ -38,7 +38,7 @@ function AdminDashboard () {
       setUpcomingEvents([]);
       setPreviousEvents([]);
 
-      fetch("http://localhost:8081/upcomingEvents",{
+      fetch("http://"+process.env.REACT_APP_API_URL + "upcomingEvents",{
             method:"get"
           }).then(res=>{
             return res.json();
@@ -55,7 +55,7 @@ function AdminDashboard () {
               })
               .catch(err=>console.log(err));
               
-              fetch("http://localhost:8081/previousEvents",{
+              fetch("http://"+process.env.REACT_APP_API_URL + "previousEvents",{
                 method:"get"
               }).then(res=>{
                 return res.json();

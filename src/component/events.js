@@ -14,8 +14,8 @@ function Events () {
         setPreviousEventsFlag(false);
         setUpcomingEvents([]);
         setPreviousEvents([]);
-        console.log("hello");
-        fetch("http://localhost:8081/upcomingEvents",{
+        console.log(process.env.REACT_APP_API_URL);
+        fetch("http://"+process.env.REACT_APP_API_URL + "upcomingEvents",{
             method:"get"
         }).then(res=>{
             return res.json();
@@ -33,7 +33,7 @@ function Events () {
         })
         .catch(err=>console.log(err));
 
-        fetch("http://localhost:8081/previousEvents",{
+        fetch("http://"+process.env.REACT_APP_API_URL + "previousEvents",{
             method:"get"
         }).then(res=>{
             return res.json();

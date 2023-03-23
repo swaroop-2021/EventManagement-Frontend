@@ -1,10 +1,9 @@
 import { decodeToken, isExpired } from "react-jwt";
 
-const API_URL = "http://localhost:8081/";
-
 class AuthService {
   login(email, password) {
-    return fetch (API_URL + "login", {
+    console.log(process.env.REACT_APP_API_URL);
+    return fetch ("http://"+process.env.REACT_APP_API_URL + "login", {
         method:"POST",
         body: JSON.stringify({email:email,password:password}),
         headers: {

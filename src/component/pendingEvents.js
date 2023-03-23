@@ -10,7 +10,7 @@ function PendingEvents(){
     const [pendingEventsFlag,setPendingEventsFlag]=useState(false);
 
     useEffect(()=>{
-        fetch('http://localhost:8081/getPendingEvents/',{
+        fetch("http://"+process.env.REACT_APP_API_URL + 'getPendingEvents/',{
             method:"post",   
         }).then(res=>{
             return res.json();
@@ -35,7 +35,7 @@ function PendingEvents(){
     },[]);
 
     const rejectEvent=(id,email)=>{
-        fetch("http://localhost:8081/eventDelete",
+        fetch("http://"+process.env.REACT_APP_API_URL + "eventDelete",
             {
                 method:"POST",
                 body:JSON.stringify({id:id,email:email}),
@@ -54,7 +54,7 @@ function PendingEvents(){
 
     const acceptEvent=(id,email)=>{
         console.log(authService.getCurrentUser().email);
-        fetch("http://localhost:8081/acceptEvent",{
+        fetch("http://"+process.env.REACT_APP_API_URL + "acceptEvent",{
             method:"POST",
             body:JSON.stringify({eventId:id,email:email}),
             headers: {

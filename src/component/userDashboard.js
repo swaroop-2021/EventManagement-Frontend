@@ -42,7 +42,7 @@ function UserDashboard () {
       setPreviousEventsFlag(false);
       setUpcomingEvents([]);
       setPreviousEvents([]);
-      fetch("http://localhost:8081/getUserDetails",{
+      fetch("http://"+process.env.REACT_APP_API_URL + "getUserDetails",{
         method:"POST",
         body:JSON.stringify({user:authService.getCurrentUser()}),
         headers: {
@@ -71,7 +71,7 @@ function UserDashboard () {
           // console.log(data.user.registeredEventIds);
 
 
-          fetch("http://localhost:8081/upcomingEvents",{
+          fetch("http://"+process.env.REACT_APP_API_URL + "upcomingEvents",{
             method:"get"
           }).then(res=>{
             return res.json();
@@ -94,7 +94,7 @@ function UserDashboard () {
               })
               .catch(err=>console.log(err));
               
-              fetch("http://localhost:8081/previousEvents",{
+              fetch("http://"+process.env.REACT_APP_API_URL + "previousEvents",{
                 method:"get"
               }).then(res=>{
                 return res.json();

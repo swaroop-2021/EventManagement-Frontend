@@ -24,7 +24,7 @@ function EventInfo(){
 
     useEffect(()=>{
         console.log(id);
-        fetch('http://localhost:8081/eventInfo/'+id,{
+        fetch("http://"+process.env.REACT_APP_API_URL + 'eventInfo/'+id,{
             method:"get",   
         }).then(res=>{
             return res.json();
@@ -68,7 +68,7 @@ function EventInfo(){
             else{
                 const currentUser=authService.getCurrentUser();
                 console.log(currentUser);
-                fetch("http://localhost:8081/registeredEvents",
+                fetch(process.env.REACT_APP_API_URL+"registeredEvents",
                 {
                     method:"POST",
                     body:JSON.stringify({email:currentUser.email}),
@@ -100,7 +100,7 @@ function EventInfo(){
         if(!authService.getCurrentUser()){
             navigate("/login");
         }
-        fetch("http://localhost:8081/eventDelete",
+        fetch("http://"+process.env.REACT_APP_API_URL + "eventDelete",
             {
                 method:"POST",
                 body:JSON.stringify({id:eventValues.eventId,email:authService.getCurrentUser().email}),
@@ -122,7 +122,7 @@ function EventInfo(){
             navigate("/login");
         }
         console.log(authService.getCurrentUser().email);
-        fetch("http://localhost:8081/registerEvent",{
+        fetch("http://"+process.env.REACT_APP_API_URL + "registerEvent",{
             method:"POST",
             body:JSON.stringify({eventId:id,email:authService.getCurrentUser().email}),
             headers: {
@@ -140,7 +140,7 @@ function EventInfo(){
             navigate("/login");
         }
         console.log(authService.getCurrentUser().email);
-        fetch("http://localhost:8081/deRegisterEvent",{
+        fetch("http://"+process.env.REACT_APP_API_URL + "deRegisterEvent",{
             method:"POST",
             body:JSON.stringify({eventId:id,email:authService.getCurrentUser().email}),
             headers: {

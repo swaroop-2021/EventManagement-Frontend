@@ -260,7 +260,7 @@ function EventRegistration () {
                 formData.append('images',values.image);
                 formData.append("token",authService.getToken());
                 console.log(formData);
-                fetch("http://localhost:8081/bookEvent",{
+                fetch("http://"+process.env.REACT_APP_API_URL + "bookEvent",{
                     method: 'POST',
                     body: formData,
                     
