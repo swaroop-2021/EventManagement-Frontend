@@ -8,8 +8,6 @@ import { LinkContainer } from "react-router-bootstrap";
 // import { MDBCardImage } from 'mdb-react-ui-kit';
 import bgImage from  '../assets/logo.png';
 
-import "https://kit.fontawesome.com/a076d05399.js";
-
 function Navigationbar () {
     const [flag,setFlag]=useState(false);
     useEffect(()=>{
